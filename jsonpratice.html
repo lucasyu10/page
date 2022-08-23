@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        padding: 0;
+        margin: 0;
+        background-color: pink;
+    }
+
+    nav {
+        padding: 10px;
+        width: 100%;
+        height: 75px;
+        background-color: gray;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    .btn {
+        width: 20%;
+        height: 50px;
+        background-color: aqua;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 36px;
+        font-weight: bolder;
+
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        height: 80%;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin: 15px;
+    }
+
+    .card {
+        cursor: pointer;
+        width: 25%;
+        /* height: 400px; */
+        background-color: orange;
+        text-align: center;
+        border-radius: 10px;
+
+
+    }
+
+    img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    main {
+        width: 100%;
+        /* height: calc(100vh - 75px); */
+        background-color: pink;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <nav>
+        <div class="btn btn1" onclick="select('food')">食物</div>
+        <div class="btn btn2" onclick="select('drink')">飲料</div>
+        <div class="btn btn3" onclick="select('dessert')">甜點</div>
+        <div class="btn btn4" onclick="select('all')">全部</div>
+    </nav>
+    <main>
+        <div class="container">
+            <!-- <div class="card">
+                
+
+
+            </div> -->
+
+        </div>
+    </main>
+    <script>
+        let food = [
+            {
+                name: '戰斧豬排',
+                img: './img/alex-munsell-auIbTAcSH6E-unsplash.jpg',
+                conent: '好吃的豬排',
+                price: 200,
+                tag: ['food']
+            },
+            {
+                name: '田園沙拉',
+                img: './img/anna-pelzer-IGfIGP5ONV0-unsplash.jpg',
+                conent: '健康又好吃',
+                price: 350,
+                tag: ['food']
+            },
+            {
+                name: '草莓蛋糕佐桑葚醬',
+                img: './img/anna-tukhfatullina-food-photographer-stylist-Mzy-OjtCI70-unsplash.jpg',
+                conent: '高檔下午茶最佳夥伴',
+                price: 500,
+                tag: ['dessert']
+            },
+            {
+                name: '楓糖鬆餅',
+                img: './img/chad-montano-eeqbbemH9-c-unsplash.jpg',
+                conent: '網美首選,拍照最好看',
+                price: 1000,
+                tag: ['dessert', 'food']
+            },
+            {
+                name: '正統披薩',
+                img: './img/chad-montano-MqT0asuoIcU-unsplash.jpg',
+                conent: '我們不提供鳳梨片',
+                price: 200,
+                tag: ['food']
+            },
+            {
+                name: '香蔥水餃',
+                img: './img/charlesdeluvio-D-vDQMTfAAU-unsplash.jpg',
+                conent: '手工現包',
+                price: 30,
+                tag: ['food']
+            },
+            {
+                name: '冰淇淋',
+                img: './img/ian-dooley-TLD6iCOlyb0-unsplash.jpg',
+                conent: '早上好上益,現在我有冰淇淋',
+                price: 200,
+                tag: ['dessert']
+            },
+            {
+                name: '調酒',
+                img: './img/melissa-walker-horn-gtDYwUIr9Vg-unsplash.jpg',
+                conent: '清涼爽口',
+                price: 200,
+                tag: ['drink']
+            },
+            {
+                name: 'taco',
+                img: './img/chad-montano-lP5MCM6nZ5A-unsplash.jpg',
+                conent: '網友指定第一名',
+                price: 200,
+                tag: ['food']
+            },
+            {
+                name: '叻沙魚排',
+                img: './img/khloe-arledge-ND3edEmzcdQ-unsplash.jpg',
+                conent: '懷舊的家鄉味',
+                price: 200,
+                tag: ['food']
+            },
+        ]
+
+        // let img=food[i].img
+
+
+
+        let container = document.querySelector('.container');
+        function select(type) {
+            container.innerHTML = '';
+            if (type == 'all') {
+                food.forEach(function (data, i) {
+                    container.innerHTML +=
+                        `<div class="card">
+                        <img  src="${food[i].img}" alt="">
+                        <h1>${food[i].name}</h1>
+                        <p>${food[i].conent}</p>
+                        <p>價格:<span>${food[i].price}</span> </p>
+                    </div>`;
+                })
+            } else {
+                food.forEach(function (data, i) {
+                    if (data.tag.includes(type)) {
+                        container.innerHTML +=
+                            `<div class="card">
+                        <img  src="${food[i].img}" alt="">
+                        <h1>${food[i].name}</h1>
+                        <p>${food[i].conent}</p>
+                        <p>價格:<span>${food[i].price}</span> </p>
+                    </div>`;
+                    }
+                })
+            }
+        };
+        select('all');
+
+
+
+    </script>
+</body>
+
+</html>
